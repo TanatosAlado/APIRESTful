@@ -30,9 +30,9 @@
     "id": 6
   },
   {
-    "title": "ulti",
-    "price": "moto",
-    "img": "wsx",
+    "title": "Perle",
+    "price": "85",
+    "img": "imagenPerle",
     "id": 7
   },
   {
@@ -54,15 +54,15 @@
     "id": 10
   },
   {
-    "title": "wal",
-    "price": "ter",
-    "img": "mar",
+    "title": "Sumuva",
+    "price": "105",
+    "img": "imagenSumuva",
     "id": 11
   },
   {
-    "title": "cris",
-    "price": "tian",
-    "img": "cito",
+    "title": "Talacasto",
+    "price": "100",
+    "img": "imagenTalacasto",
     "id": 12
   },
   {
@@ -72,9 +72,9 @@
     "id": 13
   },
   {
-    "title": "cris",
-    "price": "tian",
-    "img": "cito",
+    "title": "Tocornal",
+    "price": "135",
+    "img": "imagenTocornal",
     "id": 14
   },
   {
@@ -118,5 +118,11 @@
     "price": "Cuevas",
     "img": "ImagenPipino",
     "id": 20
+  },
+  {
+    "title": "Pepe",
+    "price": "Roger",
+    "img": "Pimpo",
+    "id": 21
   }
 ]

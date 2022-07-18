@@ -42,9 +42,6 @@ routerProducto.post("/", (req,res) => {
 })
 
 routerProducto.put("/:id", (req,res) => {
-//     let calcularIdSiguiente = req.params.id;
-//     res.json(`Agregue un producto con estas caracteristicas: ${req.body.nombre} ${req.body.apellido} ${calcularIdSiguiente}`);
-        // res.send(`Ingrese en el PUT con el ID: ${req.params.id} y los datos: ${req.body.nombre} ${req.body.apellido}`)
         myWine.updateProduct(req.params.id, req.body)
             .then((product)=>res.json(product))
 })

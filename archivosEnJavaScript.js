@@ -90,17 +90,15 @@ const fs = require("fs");
         const productos = JSON.parse(bdVinos)
         let position = productos.findIndex(element => element.id == myId)
         if(position != -1){
-            let oneId = myId
-            productos[oneId].title = oneObject.nombre;
-            productos[oneId].price = oneObject.apellido;
-            productos[oneId].img = oneObject.imagen;
+            productos[position].title = oneObject.nombre;
+            productos[position].price = oneObject.apellido;
+            productos[position].img = oneObject.imagen;
             console.table(productos)
             let newArray = JSON.stringify(productos, null, 2)
             await fs.promises.writeFile(this.archivo, newArray, "utf-8")
-            return this.getById(position)    
+            return this.getById(myId)    
         } else{
-            console.log("Elemento no encontrado")
-            return this.getById(position)    
+            res.json({error: "Error: el producto no fue encontrado"})    
         }   
         }catch(err){
             console.log(err)
