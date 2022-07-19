@@ -19,110 +19,56 @@
   },
   {
     "title": "Juanita",
-    "price": "Taramba",
-    "img": "aca URL",
+    "price": "800",
+    "img": "imagenJuanita",
     "id": 4
   },
   {
-    "title": "cale",
-    "price": "cita",
-    "img": "turca",
-    "id": 6
+    "title": "Calcareo",
+    "price": "2500",
+    "img": "imagenCalcareo",
+    "id": 5
   },
   {
     "title": "Perle",
     "price": "85",
     "img": "imagenPerle",
+    "id": 6
+  },
+  {
+    "title": "Vertigo",
+    "price": "1400",
+    "img": "imagenVertigo",
     "id": 7
-  },
-  {
-    "title": "ver",
-    "price": "te",
-    "img": "ga",
-    "id": 8
-  },
-  {
-    "title": "uno",
-    "price": "dos",
-    "img": "tres",
-    "id": 9
-  },
-  {
-    "title": "wer",
-    "price": "tgy",
-    "img": "4444",
-    "id": 10
-  },
-  {
-    "title": "Sumuva",
-    "price": "105",
-    "img": "imagenSumuva",
-    "id": 11
-  },
-  {
-    "title": "Talacasto",
-    "price": "100",
-    "img": "imagenTalacasto",
-    "id": 12
-  },
-  {
-    "title": "cris",
-    "price": "tian",
-    "img": "cito",
-    "id": 13
   },
   {
     "title": "Tocornal",
     "price": "135",
     "img": "imagenTocornal",
-    "id": 14
+    "id": 8
   },
   {
-    "title": "cris",
-    "price": "tian",
-    "img": "cito",
-    "id": 15
-  },
-  {
-    "title": "pe",
-    "price": "ti",
-    "img": "cito",
-    "id": 16
+    "title": "Talacasto",
+    "price": "100",
+    "img": "imagenTalacasto",
+    "id": 9
   },
   {
     "title": "Toro",
     "price": "125",
     "img": "imagenToro",
-    "id": 17
+    "id": 10
   },
   {
-    "title": "pe",
-    "price": "ti",
-    "img": "cito",
-    "id": 18
+    "title": "Amalaya",
+    "price": "1450",
+    "img": "urlAmalaya",
+    "id": 11
   },
   {
-    "title": "pe",
-    "price": "ti",
-    "img": "cito",
-    "id": 19
-  },
-  {
-    "title": "aaa",
-    "price": "mmm",
-    "img": "aaa",
-    "id": 20
-  },
-  {
-    "title": "Pipino",
-    "price": "Cuevas",
-    "img": "ImagenPipino",
-    "id": 20
-  },
-  {
-    "title": "Pepe",
-    "price": "Roger",
-    "img": "Pimpo",
-    "id": 21
+    "title": "Tinto",
+    "price": "1450",
+    "img": "urlTinto",
+    "id": 12
   }
 ]

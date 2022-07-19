@@ -1,4 +1,5 @@
 let cadena = "./baseProductos.json"
+const { Console } = require("console");
 const fs = require("fs");
 // const { nextTick } = require("process");
 
@@ -14,14 +15,15 @@ const fs = require("fs");
             if (pruebaIngreso.length == 0){
                 let initialArray = [];
                 nextId = 1;
-                let newObject = {title: oneObject.nombre, price: oneObject.apellido, img: oneObject.imagen, id: nextId};
+                let newObject = {title: oneObject.name, price: oneObject.price, img: oneObject.imagen, id: nextId};
                 initialArray.push(newObject);
                 let newArray = JSON.stringify(initialArray, null, 2)
                 await fs.promises.writeFile(this.archivo, newArray, "utf-8")
             }else{
                 let vinos2 = JSON.parse(pruebaIngreso)
-                nextId = parseInt(vinos2.length +1);
-                let newObject = {title: oneObject.nombre, price: oneObject.apellido, img: oneObject.imagen, id: nextId};
+                let ultimoID = parseInt(vinos2.length) -1;
+                nextId = (vinos2[ultimoID].id) +1
+                let newObject = {title: oneObject.name, price: oneObject.price, img: oneObject.imagen, id: nextId};
                 vinos2.push(newObject); 
                 let newArray = JSON.stringify(vinos2, null, 2)
                 await fs.promises.writeFile(this.archivo, newArray, "utf-8")
@@ -49,7 +51,6 @@ const fs = require("fs");
 
     getAll = async () =>{
         let losVinos = await fs.promises.readFile(this.archivo, "utf-8")
-
         if(losVinos) {
             let vinosFormato = JSON.parse(losVinos)
             return vinosFormato
@@ -90,77 +91,19 @@ const fs = require("fs");
         const productos = JSON.parse(bdVinos)
         let position = productos.findIndex(element => element.id == myId)
         if(position != -1){
-            productos[position].title = oneObject.nombre;
-            productos[position].price = oneObject.apellido;
+            productos[position].title = oneObject.name;
+            productos[position].price = oneObject.price;
             productos[position].img = oneObject.imagen;
             console.table(productos)
             let newArray = JSON.stringify(productos, null, 2)
             await fs.promises.writeFile(this.archivo, newArray, "utf-8")
             return this.getById(myId)    
         } else{
-            res.json({error: "Error: el producto no fue encontrado"})    
+            console-console.log("Elemento con ID no encontrado");   
         }   
         }catch(err){
             console.log(err)
         }
     }    
 }
-
-// const myWine = new Contenedor("./baseProductos.json");
-
-// // ---------------- Metodo Save --------------
-// console.log("========================================")
-// console.log("Probando metodo Save")
-// console.log(" ")
-// myWine.save({title:"Latitud33",price:"1240",img:"imagenLatitud33"})
-// .then((res) =>{
-//     console.log(`El ID del producto agregado es: ${res}`)
-// })
-// console.log(" ")
-// console.log("========================================")
-
-
-
-// // ---------------- Metodo getById --------------
-// console.log("========================================")
-// console.log("Probando metodo getById")
-// console.log(" ")
-// myWine.getById(2);
-// console.log(" ")
-// console.log("========================================")
-
-
-
-// // ---------------- Metodo getAll --------------
-// console.log("========================================")
-// console.log("Probando metodo getAll")
-// console.log(" ")
-// myWine.getAll();
-// console.log(" ")
-// console.log("========================================")
-
-
-// // ---------------- Metodo deleteById --------------
-// console.log("========================================")
-// console.log("Probando metodo deleteById")
-// console.log(" ")
-// myWine.deleteById(2);
-// console.log(" ")
-// console.log("========================================")
-
-
-// // ---------------- Metodo deleteAll --------------
-// console.log("========================================")
-// console.log("Probando metodo deleteAll")
-// console.log(" ")
-// myWine.deleteAll();
-// console.log(" ")
-// console.log("========================================")
-
-
-
-
-
-
-
 

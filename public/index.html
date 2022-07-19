@@ -8,6 +8,9 @@
 
     <body>
 
+        <h2>Bienvenida... desde aqui se puede probar el GetProductos y el Post</h2>
+        <br>
+        <br>
         <fieldset>
             <h2>Prueba GET productos</h2>
             <h3>Presione para traer todos los productos</h3>
@@ -15,28 +18,29 @@
                 <button>Traer</button>
             </form>
         </fieldset>
-
-        <fieldset>
+        <br>
+        <br>
+        <!-- <fieldset>
             <h2>Prueba GET productos (con ID)</h2>
             <h3>Indique el producto que quiere traer</h3>
             <form action= "/api/productos"  method="GET">
                 ID: <input type="text" name="id" />
                 <button>Traer</button>
             </form>
-        </fieldset>
+        </fieldset> -->
 
         <fieldset>
             <h2>Prueba POST</h2>
             <h3>Ingrese Datos Productos</h3>
         <form action="/api/productos" method="POST">
-            Nombre: <input type="text" name="nombre" />
-            Apellido: <input type="text" name="apellido" />
-            Imagen: <input type="text" name="imagen" />
+            Nombre: <input type="text" name="name" />
+            Precio: <input type="number" name="price" />
+            URL Imagen: <input type="text" name="imagen" />
             <button>Enviar</button>
         </form>
         </fieldset>
         
-        <fieldset>
+        <!-- <fieldset>
             <h2>Prueba PUT</h2>
             <h3>Ingrese Datos Producto a actualizar</h3>
         <form action="/api/productos" method="PUT">
@@ -54,7 +58,7 @@
                 ID: <input type="text" name="id" />
                 <button>Eliminar</button>
             </form>
-        </fieldset>
+        </fieldset> -->
 
     </body>
 
