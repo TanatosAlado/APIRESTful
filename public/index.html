@@ -3,12 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Agregar Producto</title>
+        <title>Productos</title>
     </head>
 
     <body>
 
-        <h2>Bienvenida... desde aqui se puede probar el GetProductos y el Post</h2>
         <br>
         <br>
         <fieldset>
@@ -20,14 +19,14 @@
         </fieldset>
         <br>
         <br>
-        <!-- <fieldset>
+        <fieldset>
             <h2>Prueba GET productos (con ID)</h2>
             <h3>Indique el producto que quiere traer</h3>
-            <form action= "/api/productos"  method="GET">
-                ID: <input type="text" name="id" />
+            <form action= "/api/productos/datos"  method="GET">
+                ID: <input type="number" name="id" />
                 <button>Traer</button>
             </form>
-        </fieldset> -->
+        </fieldset>
 
         <fieldset>
             <h2>Prueba POST</h2>
@@ -40,13 +39,14 @@
         </form>
         </fieldset>
         
-        <!-- <fieldset>
+        <fieldset>
             <h2>Prueba PUT</h2>
             <h3>Ingrese Datos Producto a actualizar</h3>
-        <form action="/api/productos" method="PUT">
-            ID: <input type="text" name="id" />
+        <form action="/api/productos/datos" method="PUT">
+            ID: <input type="number" name="id" />
             Nombre: <input type="text" name="nombre" />
-            Apellido: <input type="text" name="apellido" />
+            Precio: <input type="number" name="price" />
+            URL Imagen: <input type="text" name="imagen" />
             <button>Enviar</button>
         </form>
         </fieldset>
@@ -55,10 +55,12 @@
             <h2>Prueba DELETE producto (con ID)</h2>
             <h3>Indique el producto que quiere eliminar</h3>
             <form action= "/api/productos"  method="DELETE">
-                ID: <input type="text" name="id" />
+                ID: <input type="number" name="id" />
                 <button>Eliminar</button>
             </form>
-        </fieldset> -->
+        </fieldset>
+        <br><br>
+        <a href="carritos.html">Ir a carritos</a>
 
     </body>
 

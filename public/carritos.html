@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carritos</title>
+</head>
+<body>
+    <br>
+    <br>
+    <!-- <fieldset>
+        <h2>Prueba POST</h2>
+        <h3>Crear Carrito</h3>
+    <form action="/api/carrito" method="POST">
+        <button>Crear Carrito</button>
+    </form>
+    </fieldset> -->
+    <br><br><br>
+
+    <fieldset>
+        <h3>Agregar Producto al carrito</h3>
+        <form action="/api/carrito" method="POST"> 
+            <input type="number" id="newNombre" name="idProducto" placeholder="ID Producto">
+            <input type="number" id="newId" name="idCarro" placeholder="ID Carro">
+            <button>Agregar al carro</button>
+        </form> 
+    </fieldset>
+
+    <a href="index.html">Ir a Productos</a>
+</body>
+</html>

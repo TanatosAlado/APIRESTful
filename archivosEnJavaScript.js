@@ -35,6 +35,7 @@ const fs = require("fs");
     }
 
     getById = async (oneId) => {
+        console.log("porque!!!")
         try{
             let pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8")
             let vinos2 = JSON.parse(pruebaIngreso)
@@ -61,6 +62,7 @@ const fs = require("fs");
     }
 
     deleteById = async (oneId) =>{
+        console.log("deletebyid")
         try{
             let pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8");
             let vinos2 = JSON.parse(pruebaIngreso) 
@@ -106,4 +108,3 @@ const fs = require("fs");
         }
     }    
 }
-

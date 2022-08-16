@@ -1,74 +1,52 @@
 [
   {
-    "title": "Latitud33",
+    "id": 1,
+    "timestamp": "modificar",
+    "name": "Latitud33",
+    "description": "rico",
+    "code": "vino1",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_2X_919547-MLA49502099119_032022-F.webp",
     "price": "1240",
-    "img": "imagenLatitud33",
-    "id": 1
+    "stock":32
   },
   {
-    "title": "Luigi Bosca",
-    "price": "1750",
-    "img": "imagenLuigi",
-    "id": 2
+    "id": 2,
+    "timestamp": "modificar",
+    "name": "Luigi Bosca",
+    "description": "rico",
+    "code": "vino2",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_2X_987726-MLA50725340583_072022-F.webp",
+    "price": "1240",
+    "stock":32
   },
   {
-    "title": "Trumpeter",
-    "price": "1890",
-    "img": "imagenTrumpeter",
-    "id": 3
+    "id": 3,
+    "timestamp": "modificar",
+    "name": "Trumpeter",
+    "description": "rico",
+    "code": "vino2",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_2X_985608-MLA47598592316_092021-F.webp",
+    "price": "1240",
+    "stock":32
   },
   {
-    "title": "Juanita",
-    "price": "800",
-    "img": "imagenJuanita",
-    "id": 4
+    "id": 4,
+    "timestamp": "modificar",
+    "name": "Toro",
+    "description": "rico",
+    "code": "vino2",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_2X_680193-MLA46482467823_062021-F.webp",
+    "price": "1240",
+    "stock":32
   },
   {
-    "title": "Calcareo",
-    "price": "2500",
-    "img": "imagenCalcareo",
-    "id": 5
-  },
-  {
-    "title": "Perle",
-    "price": "85",
-    "img": "imagenPerle",
-    "id": 6
-  },
-  {
-    "title": "Vertigo",
-    "price": "1400",
-    "img": "imagenVertigo",
-    "id": 7
-  },
-  {
-    "title": "Tocornal",
-    "price": "135",
-    "img": "imagenTocornal",
-    "id": 8
-  },
-  {
-    "title": "Talacasto",
-    "price": "100",
-    "img": "imagenTalacasto",
-    "id": 9
-  },
-  {
-    "title": "Toro",
-    "price": "125",
-    "img": "imagenToro",
-    "id": 10
-  },
-  {
-    "title": "Amalaya",
-    "price": "1450",
-    "img": "urlAmalaya",
-    "id": 11
-  },
-  {
-    "title": "Tinto",
-    "price": "1450",
-    "img": "urlTinto",
-    "id": 12
+    "id": 5,
+    "timestamp": "modificar",
+    "name": "Rutini",
+    "description": "rico",
+    "code": "vino2",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_2X_628619-MLA43486156968_092020-F.webp",
+    "price": "1240",
+    "stock":32
   }
 ]

@@ -3,7 +3,7 @@ const { Router } = express;
 const app = express();
 app.use(express.static("public"));
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 const Contenedor = require('./archivosEnJavascript')
 
 app.use(express.json());
@@ -11,20 +11,30 @@ app.use (express.urlencoded({ extended: true }));
 
 const myWine = new Contenedor("./baseProductos.json");
 
+
+//////// Anexo Carritos
+const Cart = require("./cart");
+const myCart = new Cart('./public/carritos.json')
+
+////////
+
+
 const routerProducto = Router();
+const routerCarrito = Router();
 
 app.use("/api/productos", routerProducto);
+app.use("/api/carrito", routerCarrito);
 
 
 routerProducto.get("/", (req,res) => {
-    res.header('Content-Type', 'application/json; charset=UTF8')
     myWine.getAll()
         .then((products)=>res.json(products))
 })
 
-routerProducto.get("/:id", (req,res) => {
+routerProducto.get("/datos", (req,res) => {
+    console.log("ingreso get")
     res.header('Content-Type', 'application/json; charset=UTF8')
-    myWine.getById(req.params.id)
+    myWine.getById(req.query.id)
         .then((product)=>res.json(product))
 })
 
@@ -34,15 +44,33 @@ routerProducto.post("/", (req,res) => {
         .then((product)=>res.json(product))
 })
 
-routerProducto.put("/:id", (req,res) => {
-        myWine.updateProduct(req.params.id, req.body)
+// routerCarrito.post("/", (req,res) => {
+//     console.log("Ingrese al Post del carrito")
+//     myCart.crearCarro()
+// })
+
+routerCarrito.post("/", (req,res) => {
+    console.log("Ingrese al PUT del carrito")
+    let producto1 = req.body.idProducto;
+    let id1 = req.body.idCarro;
+    myWine.getById(producto1)
+        .then((object) => myCart.agregarAlCarro(object, id1))
+        .then(res.redirect("/carritos.html"))
+})
+
+
+
+routerProducto.put("/datos", (req,res) => {
+    console.log("Ingrese al put")
+        myWine.updateProduct(req.query.id, req.body)
             .then((product)=>res.json(product))
             .catch(res.json({error: "Error: el producto no fue encontrado"}))
 })
 
-routerProducto.delete("/:id", (req,res) => {
-    myWine.deleteById(req.params.id)
-        res.send(`Se eliminó el producto con el ID: ${req.params.id}`)
+routerProducto.delete("/", (req,res) => {
+    console.log("ingreso delete")
+    myWine.deleteById(req.query.id)
+        res.send(`Se eliminó el producto con el ID: ${req.query.id}`)
 })
 
 const server = app.listen(port, ()=>{
@@ -51,19 +79,6 @@ const server = app.listen(port, ()=>{
 
 app.on('error', (err) => {
     console.log(err)
-})
-
-
-app.get('/', (req, res) => {
-    res.header('Content-Type', 'text/html; charset=UTF8')
-    res.send(`
-            Bienvenido al sitio de Prueba de Server Express <br>
-            Seleccione la opción a probar: <br>
-            <ul>
-                <li><a href="/productos">/productos</a></li>
-                <li><a href="/productoRandom">/productoRandom</a></li>
-            </ul>
-            `)
 })
 
 let visitas = 0;
