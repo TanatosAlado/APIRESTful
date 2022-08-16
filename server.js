@@ -58,6 +58,13 @@ routerCarrito.post("/", (req,res) => {
         .then(res.redirect("/carritos.html"))
 })
 
+routerCarrito.get("/productos", (req,res) => {
+    console.log("Ingrese al get de productos")
+    console.log(req.query.id)
+    myCart.getProdById(req.query.id)
+        .then((productos) => res.json(productos))
+})
+
 
 
 routerProducto.put("/datos", (req,res) => {
