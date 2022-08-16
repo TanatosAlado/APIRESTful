@@ -65,6 +65,10 @@ routerCarrito.get("/productos", (req,res) => {
         .then((productos) => res.json(productos))
 })
 
+routerCarrito.delete("/delete", (req,res) => {
+    console.log(req.query.id)
+    // console.log(req.query.id)
+})
 
 
 routerProducto.put("/datos", (req,res) => {

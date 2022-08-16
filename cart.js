@@ -27,6 +27,10 @@ module.exports = class Cart {
             losProductos = carros2[unId].productos;
             return losProductos
         }
+
+        deleteById = async (unId) => {
+            console.log(`ingrese al getProd con ID:  ${unId}`)
+        }
     
         agregarAlCarro = async (elProducto, elId) =>{
             console.log(elProducto)
