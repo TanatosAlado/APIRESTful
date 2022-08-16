@@ -18,9 +18,9 @@ module.exports = class Cart {
             await fs.promises.writeFile(this.archivo, newArray, "utf-8")
         }
     
-    //     // getCarroById = async (unId) => {
-    
-    //     // }
+    getCarroById = async (unId) => {
+        console.log(unId)
+    }
     
         agregarAlCarro = async (elProducto, elId) =>{
             console.log(elProducto)
