@@ -35,7 +35,6 @@ const fs = require("fs");
     }
 
     getById = async (oneId) => {
-        console.log("porque!!!")
         try{
             let pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8")
             let vinos2 = JSON.parse(pruebaIngreso)
@@ -61,15 +60,15 @@ const fs = require("fs");
         }
     }
 
+    //Se elimina el producto pasado por ID
     deleteById = async (oneId) =>{
-        console.log("deletebyid")
+        console.log(oneId)
         try{
             let pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8");
             let vinos2 = JSON.parse(pruebaIngreso) 
             let position = vinos2.filter(element => element.id != oneId);
             let newArray = JSON.stringify(position, null, 2)
             await fs.promises.writeFile(this.archivo, newArray, "utf-8")
-            console.table(position)
         } catch(err){
             console.log(err)
         }
@@ -88,14 +87,21 @@ const fs = require("fs");
     }
 
     updateProduct = async (myId, oneObject) => {
+        console.log(oneObject)
         try{
         const bdVinos = await fs.promises.readFile(this.archivo, 'utf-8')
         const productos = JSON.parse(bdVinos)
         let position = productos.findIndex(element => element.id == myId)
+        console.log(position)
+        
         if(position != -1){
-            productos[position].title = oneObject.name;
-            productos[position].price = oneObject.price;
+
+            productos[position].name = oneObject.name;
+            productos[position].descripcion = oneObject.descripcion;
+            productos[position].codigo = oneObject.codigo;
             productos[position].img = oneObject.imagen;
+            productos[position].price = oneObject.price;
+            productos[position].stock = oneObject.stock;
             console.table(productos)
             let newArray = JSON.stringify(productos, null, 2)
             await fs.promises.writeFile(this.archivo, newArray, "utf-8")

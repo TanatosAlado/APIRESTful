@@ -11,51 +11,51 @@
         <br>
         <br>
         <fieldset>
-            <h2>Prueba GET productos</h2>
             <h3>Presione para traer todos los productos</h3>
             <form action="/api/productos" method="GET">
                 <button>Traer</button>
             </form>
         </fieldset>
         <br>
-        <br>
         <fieldset>
-            <h2>Prueba GET productos (con ID)</h2>
             <h3>Indique el producto que quiere traer</h3>
             <form action= "/api/productos/datos"  method="GET">
                 ID: <input type="number" name="id" />
                 <button>Traer</button>
             </form>
         </fieldset>
-
+        <br>
         <fieldset>
-            <h2>Prueba POST</h2>
             <h3>Ingrese Datos Productos</h3>
         <form action="/api/productos" method="POST">
-            Nombre: <input type="text" name="name" />
-            Precio: <input type="number" name="price" />
-            URL Imagen: <input type="text" name="imagen" />
+            <input type="text" name="name" placeholder="Nombre" />
+            <input type="text" name="descripcion" placeholder="Descripcion"/>
+            <input type="text" name="codigo" placeholder="Codigo"/>
+            <input type="text" name="imagen" placeholder="URL Imagen"/>
+            <input type="number" name="price" placeholder="Precio"/>
+            <input type="number" name="stock" placeholder="Stock"/>
             <button>Enviar</button>
         </form>
         </fieldset>
-        
+        <br>
         <fieldset>
-            <h2>Prueba PUT</h2>
             <h3>Ingrese Datos Producto a actualizar</h3>
-        <form action="/api/productos/datos" method="PUT">
-            ID: <input type="number" name="id" />
-            Nombre: <input type="text" name="nombre" />
-            Precio: <input type="number" name="price" />
-            URL Imagen: <input type="text" name="imagen" />
+        <form action="/api/productos/actualizar" method="POST">
+            <input type="number" name="id" placeholder="ID"/>
+            <input type="text" name="name" placeholder="Nombre" />
+            <input type="text" name="descripcion" placeholder="Descripcion"/>
+            <input type="text" name="codigo" placeholder="Codigo"/>
+            <input type="text" name="imagen" placeholder="URL Imagen"/>
+            <input type="number" name="price" placeholder="Precio"/>
+            <input type="number" name="stock" placeholder="Stock"/>
             <button>Enviar</button>
         </form>
         </fieldset>
-
+        <br>
         <fieldset>
-            <h2>Prueba DELETE producto (con ID)</h2>
             <h3>Indique el producto que quiere eliminar</h3>
-            <form action= "/api/productos"  method="DELETE">
-                ID: <input type="number" name="id" />
+            <form action= "/api/productos/delete"  method="POST">
+                ID: <input type="number" name="idProducto" />
                 <button>Eliminar</button>
             </form>
         </fieldset>

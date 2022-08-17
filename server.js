@@ -32,8 +32,6 @@ routerProducto.get("/", (req,res) => {
 })
 
 routerProducto.get("/datos", (req,res) => {
-    console.log("ingreso get")
-    res.header('Content-Type', 'application/json; charset=UTF8')
     myWine.getById(req.query.id)
         .then((product)=>res.json(product))
 })
@@ -44,13 +42,14 @@ routerProducto.post("/", (req,res) => {
         .then((product)=>res.json(product))
 })
 
-// routerCarrito.post("/", (req,res) => {
-//     console.log("Ingrese al Post del carrito")
-//     myCart.crearCarro()
-// })
+//Crea Carrito
+routerCarrito.post("/nuevo", (req,res) => {
+    console.log("Ingrese al Post del carrito")
+    myCart.crearCarro()
+})
 
+//Agrega un producto indicado a un carro indicado
 routerCarrito.post("/", (req,res) => {
-    console.log("Ingrese al PUT del carrito")
     let producto1 = req.body.idProducto;
     let id1 = req.body.idCarro;
     myWine.getById(producto1)
@@ -58,30 +57,36 @@ routerCarrito.post("/", (req,res) => {
         .then(res.redirect("/carritos.html"))
 })
 
+//Lista los productos de un carrito indicado
 routerCarrito.get("/productos", (req,res) => {
-    console.log("Ingrese al get de productos")
-    console.log(req.query.id)
     myCart.getProdById(req.query.id)
         .then((productos) => res.json(productos))
 })
 
-routerCarrito.delete("/delete", (req,res) => {
-    console.log(req.query.id)
-    // console.log(req.query.id)
+//Elimina el carro indicado
+routerCarrito.get("/delete", (req,res) => {
+    myCart.deleteById(req.query.id)
+        .then(res.redirect("/carritos.html"))
 })
 
-
-routerProducto.put("/datos", (req,res) => {
-    console.log("Ingrese al put")
-        myWine.updateProduct(req.query.id, req.body)
-            .then((product)=>res.json(product))
-            .catch(res.json({error: "Error: el producto no fue encontrado"}))
+//Elimina un producto indicado de un carro indicado
+routerCarrito.post("/del", (req,res) => {
+    myCart.eliminarProdDeCarro(req.body.idCarro, req.body.idProd)
+        .then(res.redirect("/carritos.html"))
 })
 
-routerProducto.delete("/", (req,res) => {
-    console.log("ingreso delete")
-    myWine.deleteById(req.query.id)
-        res.send(`Se eliminó el producto con el ID: ${req.query.id}`)
+//Actualiza un producto
+routerProducto.post("/actualizar", (req,res) => {
+    myWine.updateProduct(req.query.id, req.body)
+        .then((product)=>res.json(product))
+        .catch(res.json({error: "Error: el producto no fue encontrado"}))
+})
+
+//Elimina el producto pasado por parametro.
+routerProducto.post("/delete", (req,res) => {
+    myWine.deleteById(req.body.idProducto)
+        res.send(`Se eliminó el producto con el ID: ${req.body.idProducto}`)
+        
 })
 
 const server = app.listen(port, ()=>{

@@ -9,13 +9,12 @@
 <body>
     <br>
     <br>
-    <!-- <fieldset>
-        <h2>Prueba POST</h2>
+    <fieldset>
         <h3>Crear Carrito</h3>
-    <form action="/api/carrito" method="POST">
+    <form action="/api/carrito/nuevo" method="POST">
         <button>Crear Carrito</button>
     </form>
-    </fieldset> -->
+    </fieldset>
     <br><br><br>
 
     <fieldset>
@@ -41,9 +40,20 @@
 
     <fieldset>
         <h3>Eliminar un Carro por ID</h3>
-        <form action="/api/carrito/delete" method="DELETE"> 
-            <!-- <input type="number" name="id" placeholder="ID Carro"> -->
+        <form action="/api/carrito/delete" method="GET"> 
+            <input type="number" name="id" placeholder="ID Carro">
             <button>Eliminar carro</button>
+        </form> 
+    </fieldset>
+
+    <br><br><br>
+
+    <fieldset>
+        <h3>Eliminar un Producto de un Carro</h3>
+        <form action="/api/carrito/del" method="POST"> 
+            <input type="number" name="idCarro" placeholder="ID Carro">
+            <input type="number" name="idProd" placeholder="ID Producto">
+            <button>Eliminar Producto de carro</button>
         </form> 
     </fieldset>
 
