@@ -1,0 +1,54 @@
+.title {
+    color: blue;
+    text-align: center;
+}
+
+table {
+    max-width: 50%;
+    margin: auto;
+}
+
+.background_table {
+    background-color: lightyellow;
+}
+
+.btn_inicio {
+    background-color: lightblue;
+    border-color: transparent;
+    border-radius: 10%;
+}
+
+.btn_inicio a {
+    text-align: center;
+}
+
+.center_button {
+    text-align: center;
+}
+
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.centrar_form {
+    margin-left: 25%
+}
+
+#fname,
+#email,
+#lname,
+#description,
+#stock,#search_id {
+    background-color: lightyellow;
+}
+
+.tamaño {
+    width: 40px;
+}
+
+.card img{
+    height: 200px;
+    width: 120px;
+}

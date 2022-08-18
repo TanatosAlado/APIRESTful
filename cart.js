@@ -17,11 +17,19 @@ module.exports = class Cart {
         }
     
         getProdById = async (unId) => {
+            console.log(unId)
             let losProductos = []
             let traerCarros = await fs.promises.readFile(this.archivo, "utf-8")
             let carros2 = JSON.parse(traerCarros)
-            losProductos = carros2[unId].productos;
-            return losProductos
+            let position = carros2.findIndex(element => element.id == unId)
+            if (position != -1){
+                losProductos = carros2[position].productos;
+                return losProductos
+            }else{
+                console.log("Carrito no encontrado")
+            }
+            
+            
         }
 
         deleteById = async (unId) => {

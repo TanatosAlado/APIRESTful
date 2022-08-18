@@ -1,38 +1,44 @@
 let cadena = "./baseProductos.json"
-const { Console } = require("console");
+const { Console, error } = require("console");
 const fs = require("fs");
 // const { nextTick } = require("process");
+
+
+let esAdmin = false;
+// let esAdmin = true;
 
     module.exports = class Contenedor {
         constructor(archivo){
             this.archivo = archivo;
         }
 
-    save = async (oneObject) => {
-        let nextId = 0;
-        try{
-            const pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8");
-            if (pruebaIngreso.length == 0){
-                let initialArray = [];
-                nextId = 1;
-                let newObject = {title: oneObject.name, price: oneObject.price, img: oneObject.imagen, id: nextId};
-                initialArray.push(newObject);
-                let newArray = JSON.stringify(initialArray, null, 2)
-                await fs.promises.writeFile(this.archivo, newArray, "utf-8")
-            }else{
-                let vinos2 = JSON.parse(pruebaIngreso)
-                let ultimoID = parseInt(vinos2.length) -1;
-                nextId = (vinos2[ultimoID].id) +1
-                let newObject = {title: oneObject.name, price: oneObject.price, img: oneObject.imagen, id: nextId};
-                vinos2.push(newObject); 
-                let newArray = JSON.stringify(vinos2, null, 2)
-                await fs.promises.writeFile(this.archivo, newArray, "utf-8")
+        save = async (oneObject) => {
+            let nextId = 0;
+            try{
+                const pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8");
+                if (pruebaIngreso.length == 0){
+                    let initialArray = [];
+                    nextId = 1;
+                    let elCodigo = "WyneNumbre" + nextId;
+                    let newObject = {id: nextId, timestamp: new Date(), name: oneObject.name, description: oneObject.description, code: elCodigo, img: oneObject.imagen, price: oneObject.price, stock: oneObject.stock};
+                    initialArray.push(newObject);
+                    let newArray = JSON.stringify(initialArray, null, 2)
+                    await fs.promises.writeFile(this.archivo, newArray, "utf-8")
+                }else{
+                    let vinos2 = JSON.parse(pruebaIngreso)
+                    let ultimoID = parseInt(vinos2.length) -1;
+                    nextId = (vinos2[ultimoID].id) +1
+                    let elCodigo = "WyneNumber" + nextId;
+                    let newObject = {id: nextId, timestamp: new Date(), name: oneObject.name, description: oneObject.description, code: elCodigo, img: oneObject.imagen, price: oneObject.price, stock: oneObject.stock };
+                    vinos2.push(newObject); 
+                    let newArray = JSON.stringify(vinos2, null, 2)
+                    await fs.promises.writeFile(this.archivo, newArray, "utf-8")
+                }
+            } catch(err){
+                console.log(err)
             }
-        } catch(err){
-            console.log(err)
+            return this.getById(nextId);
         }
-        return this.getById(nextId);
-    }
 
     getById = async (oneId) => {
         try{
@@ -58,11 +64,10 @@ const fs = require("fs");
         else{
             return []
         }
-    }
+    }      
 
     //Se elimina el producto pasado por ID
     deleteById = async (oneId) =>{
-        console.log(oneId)
         try{
             let pruebaIngreso = await fs.promises.readFile(this.archivo, "utf-8");
             let vinos2 = JSON.parse(pruebaIngreso) 
@@ -87,30 +92,27 @@ const fs = require("fs");
     }
 
     updateProduct = async (myId, oneObject) => {
-        console.log(oneObject)
         try{
         const bdVinos = await fs.promises.readFile(this.archivo, 'utf-8')
         const productos = JSON.parse(bdVinos)
         let position = productos.findIndex(element => element.id == myId)
-        console.log(position)
-        
         if(position != -1){
-
             productos[position].name = oneObject.name;
-            productos[position].descripcion = oneObject.descripcion;
-            productos[position].codigo = oneObject.codigo;
+            productos[position].description = oneObject.descripcion;
+            productos[position].code = oneObject.codigo;
             productos[position].img = oneObject.imagen;
             productos[position].price = oneObject.price;
             productos[position].stock = oneObject.stock;
-            console.table(productos)
             let newArray = JSON.stringify(productos, null, 2)
             await fs.promises.writeFile(this.archivo, newArray, "utf-8")
-            return this.getById(myId)    
+            return productos[position];    
         } else{
-            console-console.log("Elemento con ID no encontrado");   
+            console.log("Elemento con ID no encontrado");   
         }   
         }catch(err){
             console.log(err)
         }
     }    
 }
+
+

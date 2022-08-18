@@ -2,12 +2,24 @@ const express = require("express");
 const { Router } = express;
 const app = express();
 app.use(express.static("public"));
+const handlebars = require("express-handlebars");
 
 const port = process.env.PORT || 8080
 const Contenedor = require('./archivosEnJavascript')
 
 app.use(express.json());
 app.use (express.urlencoded({ extended: true }));
+
+
+const hbs = handlebars.create({
+    extname: ".hbs",
+    defaultLayout: "index.hbs",
+    layoutsDir: __dirname + "/Views/Layout",
+});
+
+app.engine("hbs", hbs.engine);
+app.set('views', "./Views");
+app.set("view engine", "hbs");
 
 const myWine = new Contenedor("./baseProductos.json");
 
@@ -26,26 +38,45 @@ app.use("/api/productos", routerProducto);
 app.use("/api/carrito", routerCarrito);
 
 
+//Variable a modificar para probar funcionalidades de Administrador
+let administrador = true;
+
+const isAdmin = (req,res,next) =>{
+    if (administrador){
+        return next()
+    }  
+    else{
+        const response = {
+            error: -1,
+            description: `Ruta ${req.path} y metodo ${req.method} no autorizados` 
+        }
+        res.status(401).json(response)
+    }
+}
+
+//Lista todos los productos
 routerProducto.get("/", (req,res) => {
     myWine.getAll()
-        .then((products)=>res.json(products))
+        .then((products) => res.render("productos", { products }))
 })
 
+//Lista el producto solicitado
 routerProducto.get("/datos", (req,res) => {
     myWine.getById(req.query.id)
-        .then((product)=>res.json(product))
+        .then((products) => res.render("productos_id",products))
 })
 
-routerProducto.post("/", (req,res) => {
-    res.header('Content-Type', 'application/json; charset=UTF8')
+//Crea producto
+routerProducto.post("/", isAdmin, (req,res) => {
     myWine.save(req.body)
-        .then((product)=>res.json(product))
+        .then((products) => res.render("productos_id",products))
 })
 
 //Crea Carrito
 routerCarrito.post("/nuevo", (req,res) => {
     console.log("Ingrese al Post del carrito")
     myCart.crearCarro()
+    .then(res.redirect("/carritos.html"))
 })
 
 //Agrega un producto indicado a un carro indicado
@@ -60,7 +91,7 @@ routerCarrito.post("/", (req,res) => {
 //Lista los productos de un carrito indicado
 routerCarrito.get("/productos", (req,res) => {
     myCart.getProdById(req.query.id)
-        .then((productos) => res.json(productos))
+    .then((products) => res.render("productos", { products }))
 })
 
 //Elimina el carro indicado
@@ -76,14 +107,13 @@ routerCarrito.post("/del", (req,res) => {
 })
 
 //Actualiza un producto
-routerProducto.post("/actualizar", (req,res) => {
-    myWine.updateProduct(req.query.id, req.body)
-        .then((product)=>res.json(product))
-        .catch(res.json({error: "Error: el producto no fue encontrado"}))
+routerProducto.post("/actualizar", isAdmin, (req,res) => {
+    myWine.updateProduct(req.body.id, req.body)
+    .then((products) => res.render("productos_id",products))
 })
 
 //Elimina el producto pasado por parametro.
-routerProducto.post("/delete", (req,res) => {
+routerProducto.post("/delete", isAdmin, (req,res) => {
     myWine.deleteById(req.body.idProducto)
         res.send(`Se eliminó el producto con el ID: ${req.body.idProducto}`)
         
