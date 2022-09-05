@@ -5,7 +5,7 @@ app.use(express.static("public"));
 const handlebars = require("express-handlebars");
 
 const port = process.env.PORT || 8080
-const Contenedor = require('./archivosEnJavascript')
+const Contenedor = require('./archivos')
 
 app.use(express.json());
 app.use (express.urlencoded({ extended: true }));
